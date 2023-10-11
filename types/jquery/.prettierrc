@@ -1,0 +1,10 @@
+{
+  "parser": "typescript",
+  "printWidth": 140,
+  "semi": false,
+  "singleQuote": true,
+  "arrowParens": "avoid",
+  "bracketSpacing": true,
+  "eslintIntegration": true,
+  "endOfLine": "lf"
+}

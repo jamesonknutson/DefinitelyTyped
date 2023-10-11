@@ -2,7 +2,7 @@
 // tslint:disable:max-line-length
 // tslint:disable:no-irregular-whitespace
 
-interface JQuery<TElement = HTMLElement> extends Iterable<TElement> {
+interface JQuery<T = HTMLElement> extends Iterable<T> {
     /**
      * A string containing the jQuery version number.
      * @see \`{@link https://api.jquery.com/jquery-2/#jquery1 }\`
@@ -418,7 +418,7 @@ $( "div" ).addClass(function( index, currentClass ) {
 </html>
 ```
      */
-    addClass(className_function: JQuery.TypeOrArray<string> | ((this: TElement, index: number, currentClassName: string) => string)): this;
+    addClass(className_function: JQuery.TypeOrArray<string> | ((this: T, index: number, currentClassName: string) => string)): this;
     /**
      * Insert content, specified by the parameter, after each element in the set of matched elements.
      * @param contents One or more additional DOM elements, text nodes, arrays of elements and text nodes, HTML strings, or
@@ -518,7 +518,7 @@ $( "p" ).after( $( "b" ) );
      * @since 1.4
      * @since 1.10
      */
-    after(function_functionｰhtml: (this: TElement, index: number, html: string) => JQuery.htmlString | JQuery.TypeOrArray<JQuery.Node | JQuery<JQuery.Node>>): this;
+    after(function_functionｰhtml: (this: T, index: number, html: string) => JQuery.htmlString | JQuery.TypeOrArray<JQuery.Node | JQuery<JQuery.Node>>): this;
     /**
      * Register a handler to be called when Ajax requests complete. This is an AjaxEvent.
      * @param handler The function to be invoked.
@@ -639,7 +639,7 @@ $( "p" ).animate({
     animate(properties: JQuery.PlainObject,
             duration: JQuery.Duration,
             easing: string,
-            complete?: (this: TElement) => void): this;
+            complete?: (this: T) => void): this;
     /**
      * Perform a custom animation of a set of CSS properties.
      * @param properties An object of CSS properties and values that the animation will move toward.
@@ -743,7 +743,7 @@ $( "p" ).animate({
      */
     animate(properties: JQuery.PlainObject,
             duration_easing: JQuery.Duration | string,
-            complete?: (this: TElement) => void): this;
+            complete?: (this: T) => void): this;
     /**
      * Perform a custom animation of a set of CSS properties.
      * @param properties An object of CSS properties and values that the animation will move toward.
@@ -895,7 +895,7 @@ $( "p" ).animate({
 ```
      */
     animate(properties: JQuery.PlainObject,
-            options: JQuery.EffectsOptions<TElement>): this;
+            options: JQuery.EffectsOptions<T>): this;
     /**
      * Perform a custom animation of a set of CSS properties.
      * @param properties An object of CSS properties and values that the animation will move toward.
@@ -904,7 +904,7 @@ $( "p" ).animate({
      * @since 1.0
      */
     animate(properties: JQuery.PlainObject,
-            complete?: (this: TElement) => void): this;
+            complete?: (this: T) => void): this;
     /**
      * Insert content, specified by the parameter, to the end of each element in the set of matched elements.
      * @param contents One or more additional DOM elements, text nodes, arrays of elements and text nodes, HTML strings, or
@@ -998,7 +998,7 @@ $( "p" ).append( $( "strong" ) );
      * @see \`{@link https://api.jquery.com/append/ }\`
      * @since 1.4
      */
-    append(funсtion: (this: TElement, index: number, html: string) => JQuery.htmlString | JQuery.TypeOrArray<JQuery.Node | JQuery<JQuery.Node>>): this;
+    append(funсtion: (this: T, index: number, html: string) => JQuery.htmlString | JQuery.TypeOrArray<JQuery.Node | JQuery<JQuery.Node>>): this;
     /**
      * Insert every element in the set of matched elements to the end of the target.
      * @param target A selector, element, HTML string, array of elements, or jQuery object; the matched set of elements
@@ -1108,7 +1108,7 @@ $( "img" ).attr( "src", function() {
 ```
      */
     attr(attributeName: string,
-         value_function: string | number | null | ((this: TElement, index: number, attr: string) => string | number | void | undefined)): this;
+         value_function: string | number | null | ((this: T, index: number, attr: string) => string | number | void | undefined)): this;
     /**
      * Set one or more attributes for the set of matched elements.
      * @param attributes An object of attribute-value pairs to set.
@@ -1328,7 +1328,7 @@ $( "p" ).before( $( "b" ) );
      * @since 1.4
      * @since 1.10
      */
-    before(function_functionｰhtml: (this: TElement, index: number, html: string) => JQuery.htmlString | JQuery.TypeOrArray<JQuery.Node | JQuery<JQuery.Node>>): this;
+    before(function_functionｰhtml: (this: T, index: number, html: string) => JQuery.htmlString | JQuery.TypeOrArray<JQuery.Node | JQuery<JQuery.Node>>): this;
     // [bind() overloads] https://github.com/jquery/api.jquery.com/issues/1048
     /**
      * Attach a handler to an event for the elements.
@@ -1348,7 +1348,7 @@ $( "p" ).before( $( "b" ) );
          TData>(
         eventType: TType,
         eventData: TData,
-        handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, TType>
+        handler: JQuery.TypeEventHandler<T, TData, T, T, TType>
     ): this;
     /**
      * Attach a handler to an event for the elements.
@@ -1478,7 +1478,7 @@ $( "button" ).click(function() {
      */
     bind<TType extends string>(
         eventType: TType,
-        handler_preventBubble: JQuery.TypeEventHandler<TElement, undefined, TElement, TElement, TType> |
+        handler_preventBubble: JQuery.TypeEventHandler<T, undefined, T, T, TType> |
                                false |
                                null |
                                undefined
@@ -1508,7 +1508,7 @@ $( "div.test" ).bind({
 });
 ```
      */
-    bind(events: JQuery.TypeEventHandlers<TElement, undefined, TElement, TElement>): this;
+    bind(events: JQuery.TypeEventHandlers<T, undefined, T, T>): this;
     /**
      * Bind an event handler to the "blur" JavaScript event, or trigger that event on an element.
      * @param eventData An object containing data that will be passed to the event handler.
@@ -1522,7 +1522,7 @@ $( "div.test" ).bind({
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     blur<TData>(eventData: TData,
-                handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'blur'>): this;
+                handler: JQuery.TypeEventHandler<T, TData, T, T, 'blur'>): this;
     /**
      * Bind an event handler to the "blur" JavaScript event, or trigger that event on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -1538,7 +1538,7 @@ $( "div.test" ).bind({
 $( "p" ).blur();
 ```
      */
-    blur(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'blur'> |
+    blur(handler?: JQuery.TypeEventHandler<T, null, T, T, 'blur'> |
                    false): this;
     /**
      * Bind an event handler to the "change" JavaScript event, or trigger that event on an element.
@@ -1553,7 +1553,7 @@ $( "p" ).blur();
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     change<TData>(eventData: TData,
-                  handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'change'>): this;
+                  handler: JQuery.TypeEventHandler<T, TData, T, T, 'change'>): this;
     /**
      * Bind an event handler to the "change" JavaScript event, or trigger that event on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -1612,7 +1612,7 @@ $( "input[type='text']" ).change(function() {
 });
 ```
      */
-    change(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'change'> |
+    change(handler?: JQuery.TypeEventHandler<T, null, T, T, 'change'> |
                      false): this;
     /**
      * Get the children of each element in the set of matched elements, optionally filtered by a selector.
@@ -1868,7 +1868,7 @@ $( "#stop" ).click(function() {
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     click<TData>(eventData: TData,
-                 handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'click'>): this;
+                 handler: JQuery.TypeEventHandler<T, TData, T, T, 'click'>): this;
     /**
      * Bind an event handler to the "click" JavaScript event, or trigger that event on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -1918,7 +1918,7 @@ $( "p" ).click(function() {
 $( "p" ).click();
 ```
      */
-    click(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'click'> |
+    click(handler?: JQuery.TypeEventHandler<T, null, T, T, 'click'> |
                     false): this;
     /**
      * Create a deep copy of the set of matched elements.
@@ -2093,7 +2093,7 @@ $( "#frameDemo" ).contents().find( "a" ).css( "background-color", "#BADA55" );
 </html>
 ```
      */
-    contents(): JQuery<TElement | Text | Comment | Document>;
+    contents(): JQuery<T | Text | Comment | Document>;
     /**
      * Bind an event handler to the "contextmenu" JavaScript event, or trigger that event on an element.
      * @param eventData An object containing data that will be passed to the event handler.
@@ -2107,7 +2107,7 @@ $( "#frameDemo" ).contents().find( "a" ).css( "background-color", "#BADA55" );
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     contextmenu<TData>(eventData: TData,
-                       handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'contextmenu'>): this;
+                       handler: JQuery.TypeEventHandler<T, TData, T, T, 'contextmenu'>): this;
     /**
      * Bind an event handler to the "contextmenu" JavaScript event, or trigger that event on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -2161,7 +2161,7 @@ div.contextmenu(function() {
 </html>
 ```
      */
-    contextmenu(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'contextmenu'> |
+    contextmenu(handler?: JQuery.TypeEventHandler<T, null, T, T, 'contextmenu'> |
                           false): this;
     /**
      * Set one or more CSS properties for the set of matched elements.
@@ -2275,7 +2275,7 @@ $( "span" ).on( "click", function() {
 ```
      */
     css(propertyName: string,
-        value_function: string | number | ((this: TElement, index: number, value: string) => string | number | void | undefined)): this;
+        value_function: string | number | ((this: T, index: number, value: string) => string | number | void | undefined)): this;
     /**
      * Set one or more CSS properties for the set of matched elements.
      * @param properties An object of property-value pairs to set.
@@ -2358,7 +2358,7 @@ $( "div" ).on( "click", function() {
 </html>
 ```
      */
-    css(properties: JQuery.PlainObject<string | number | ((this: TElement, index: number, value: string) => string | number | void | undefined)>): this;
+    css(properties: JQuery.PlainObject<string | number | ((this: T, index: number, value: string) => string | number | void | undefined)>): this;
     /**
      * Get the computed style properties for the first element in the set of matched elements.
      * @param propertyName A CSS property.
@@ -2623,7 +2623,7 @@ $( "button" ).click(function() {
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     dblclick<TData>(eventData: TData,
-                    handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'dblclick'>): this;
+                    handler: JQuery.TypeEventHandler<T, TData, T, T, 'dblclick'>): this;
     /**
      * Bind an event handler to the "dblclick" JavaScript event, or trigger that event on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -2677,7 +2677,7 @@ divdbl.dblclick(function() {
 </html>
 ```
      */
-    dblclick(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'dblclick'> |
+    dblclick(handler?: JQuery.TypeEventHandler<T, null, T, T, 'dblclick'> |
                        false): this;
     /**
      * Set a timer to delay execution of subsequent items in the queue.
@@ -2748,7 +2748,7 @@ $( "button" ).click(function() {
         selector: JQuery.Selector,
         eventType: TType,
         eventData: TData,
-        handler: JQuery.TypeEventHandler<TElement, TData, any, any, TType>
+        handler: JQuery.TypeEventHandler<T, TData, any, any, TType>
     ): this;
     /**
      * Attach a handler to one or more events for all elements that match the selector, now or in the future, based on a specific set of root elements.
@@ -2864,7 +2864,7 @@ $( "button" ).click(function() {
     delegate<TType extends string>(
         selector: JQuery.Selector,
         eventType: TType,
-        handler: JQuery.TypeEventHandler<TElement, undefined, any, any, TType> |
+        handler: JQuery.TypeEventHandler<T, undefined, any, any, TType> |
                  false
     ): this;
     /**
@@ -2880,7 +2880,7 @@ $( "button" ).click(function() {
      * **Solution**: Change the method call to use `.on()` or `.off()`, the documentation for the old methods include specific instructions. In general, the `.bind()` and `.unbind()` methods can be renamed directly to `.on()` and `.off()` respectively since the argument orders are identical.
      */
     delegate(selector: JQuery.Selector,
-             events: JQuery.TypeEventHandlers<TElement, undefined, any, any>
+             events: JQuery.TypeEventHandlers<T, undefined, any, any>
     ): this;
     /**
      * Execute the next function on the queue for the matched elements.
@@ -3121,7 +3121,7 @@ $( "button" ).click(function() {
 </html>
 ```
      */
-    each(funсtion: (this: TElement, index: number, element: TElement) => void | false): this;
+    each(funсtion: (this: T, index: number, element: T) => void | false): this;
     /**
      * Remove all child nodes of the set of matched elements from the DOM.
      * @see \`{@link https://api.jquery.com/empty/ }\`
@@ -3367,7 +3367,7 @@ $( "input[type='checkbox']" ).check();
      * @see \`{@link https://api.jquery.com/fadeIn/ }\`
      * @since 1.4.3
      */
-    fadeIn(duration: JQuery.Duration, easing: string, complete?: (this: TElement) => void): this;
+    fadeIn(duration: JQuery.Duration, easing: string, complete?: (this: T) => void): this;
     /**
      * Display the matched elements by fading them to opaque.
      * @param duration_easing _&#x40;param_ `duration_easing`
@@ -3433,7 +3433,7 @@ $( "a" ).click(function() {
 </html>
 ```
      */
-    fadeIn(duration_easing: JQuery.Duration | string, complete: (this: TElement) => void): this;
+    fadeIn(duration_easing: JQuery.Duration | string, complete: (this: T) => void): this;
     /**
      * Display the matched elements by fading them to opaque.
      * @param duration_easing_complete_options _&#x40;param_ `duration_easing_complete_options`
@@ -3493,7 +3493,7 @@ $( document.body ).click(function() {
 </html>
 ```
      */
-    fadeIn(duration_easing_complete_options?: JQuery.Duration | string | ((this: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
+    fadeIn(duration_easing_complete_options?: JQuery.Duration | string | ((this: T) => void) | JQuery.EffectsOptions<T>): this;
     /**
      * Hide the matched elements by fading them to transparent.
      * @param duration A string or number determining how long the animation will run.
@@ -3554,7 +3554,7 @@ $( "#btn2" ).click(function() {
 </html>
 ```
      */
-    fadeOut(duration: JQuery.Duration, easing: string, complete?: (this: TElement) => void): this;
+    fadeOut(duration: JQuery.Duration, easing: string, complete?: (this: T) => void): this;
     /**
      * Hide the matched elements by fading them to transparent.
      * @param duration_easing _&#x40;param_ `duration_easing`
@@ -3614,7 +3614,7 @@ $( "span" ).hover(function() {
 </html>
 ```
      */
-    fadeOut(duration_easing: JQuery.Duration | string, complete: (this: TElement) => void): this;
+    fadeOut(duration_easing: JQuery.Duration | string, complete: (this: T) => void): this;
     /**
      * Hide the matched elements by fading them to transparent.
      * @param duration_easing_complete_options _&#x40;param_ `duration_easing_complete_options`
@@ -3658,7 +3658,7 @@ $( "p" ).click(function() {
 </html>
 ```
      */
-    fadeOut(duration_easing_complete_options?: JQuery.Duration | string | ((this: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
+    fadeOut(duration_easing_complete_options?: JQuery.Duration | string | ((this: T) => void) | JQuery.EffectsOptions<T>): this;
     /**
      * Adjust the opacity of the matched elements.
      * @param duration A string or number determining how long the animation will run.
@@ -3668,7 +3668,7 @@ $( "p" ).click(function() {
      * @see \`{@link https://api.jquery.com/fadeTo/ }\`
      * @since 1.4.3
      */
-    fadeTo(duration: JQuery.Duration, opacity: number, easing: string, complete?: (this: TElement) => void): this;
+    fadeTo(duration: JQuery.Duration, opacity: number, easing: string, complete?: (this: T) => void): this;
     /**
      * Adjust the opacity of the matched elements.
      * @param duration A string or number determining how long the animation will run.
@@ -3825,7 +3825,7 @@ $( "div" )
 </html>
 ```
      */
-    fadeTo(duration: JQuery.Duration, opacity: number, complete?: (this: TElement) => void): this;
+    fadeTo(duration: JQuery.Duration, opacity: number, complete?: (this: T) => void): this;
     /**
      * Display or hide the matched elements by animating their opacity.
      * @param duration A string or number determining how long the animation will run.
@@ -3865,7 +3865,7 @@ $( "button:last" ).click(function() {
 </html>
 ```
      */
-    fadeToggle(duration: JQuery.Duration, easing: string, complete?: (this: TElement) => void): this;
+    fadeToggle(duration: JQuery.Duration, easing: string, complete?: (this: T) => void): this;
     /**
      * Display or hide the matched elements by animating their opacity.
      * @param duration_easing _&#x40;param_ `duration_easing`
@@ -3908,7 +3908,7 @@ $( "button:last" ).click(function() {
 </html>
 ```
      */
-    fadeToggle(duration_easing: JQuery.Duration | string, complete: (this: TElement) => void): this;
+    fadeToggle(duration_easing: JQuery.Duration | string, complete: (this: T) => void): this;
     /**
      * Display or hide the matched elements by animating their opacity.
      * @param duration_easing_complete_options _&#x40;param_ `duration_easing_complete_options`
@@ -3921,7 +3921,7 @@ $( "button:last" ).click(function() {
      * @since 1.0
      * @since 1.4.3
      */
-    fadeToggle(duration_easing_complete_options?: JQuery.Duration | string | ((this: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
+    fadeToggle(duration_easing_complete_options?: JQuery.Duration | string | ((this: T) => void) | JQuery.EffectsOptions<T>): this;
     /**
      * Reduce the set of matched elements to those that match the selector or pass the function's test.
      * @param selector_elements_selection_function _&#x40;param_ `selector_elements_selection_function`
@@ -4022,7 +4022,7 @@ $( "div" ).filter( $( "#unique" ) );
         JQuery.Selector |
         JQuery.TypeOrArray<Element> |
         JQuery |
-        ((this: TElement, index: number, element: TElement) => boolean)
+        ((this: T, index: number, element: T) => boolean)
     ): this;
     /**
      * Get the descendants of each element in the current set of matched elements, filtered by a selector, jQuery object, or element.
@@ -4135,6 +4135,7 @@ $( "p" )
 </html>
 ```
      */
+    find<T extends string>(selector: T): JQuery<ParseSelector<T>>;
     find<K extends keyof HTMLElementTagNameMap>(selector_element: K | JQuery<K>): JQuery<HTMLElementTagNameMap[K]>;
     find<K extends keyof SVGElementTagNameMap>(selector_element: K | JQuery<K>): JQuery<SVGElementTagNameMap[K]>;
     find<E extends HTMLElement>(selector_element: JQuery.Selector | Element | E | JQuery<E>): JQuery<E>;
@@ -4303,7 +4304,7 @@ $( "p span" ).first().addClass( "highlight" );
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     focus<TData>(eventData: TData,
-                 handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'focus'>): this;
+                 handler: JQuery.TypeEventHandler<T, TData, T, T, 'focus'>): this;
     /**
      * Bind an event handler to the "focus" JavaScript event, or trigger that event on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -4355,7 +4356,7 @@ $( document ).ready(function() {
 });
 ```
      */
-    focus(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'focus'> |
+    focus(handler?: JQuery.TypeEventHandler<T, null, T, T, 'focus'> |
                     false): this;
     /**
      * Bind an event handler to the "focusin" event.
@@ -4370,7 +4371,7 @@ $( document ).ready(function() {
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     focusin<TData>(eventData: TData,
-                   handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'focusin'>): this;
+                   handler: JQuery.TypeEventHandler<T, TData, T, T, 'focusin'>): this;
     /**
      * Bind an event handler to the "focusin" event.
      * @param handler A function to execute each time the event is triggered.
@@ -4410,7 +4411,7 @@ $( "p" ).focusin(function() {
 </html>
 ```
      */
-    focusin(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'focusin'> |
+    focusin(handler?: JQuery.TypeEventHandler<T, null, T, T, 'focusin'> |
                       false): this;
     /**
      * Bind an event handler to the "focusout" JavaScript event.
@@ -4425,7 +4426,7 @@ $( "p" ).focusin(function() {
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     focusout<TData>(eventData: TData,
-                    handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'focusout'>): this;
+                    handler: JQuery.TypeEventHandler<T, TData, T, T, 'focusout'>): this;
     /**
      * Bind an event handler to the "focusout" JavaScript event.
      * @param handler A function to execute each time the event is triggered.
@@ -4486,7 +4487,7 @@ $( "p" )
 </html>
 ```
      */
-    focusout(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'focusout'> |
+    focusout(handler?: JQuery.TypeEventHandler<T, null, T, T, 'focusout'> |
                        false): this;
     /**
      * Retrieve one of the elements matched by the jQuery object.
@@ -4528,7 +4529,7 @@ $( "*", document.body ).click(function( event ) {
 </html>
 ```
      */
-    get(index: number): TElement | undefined;
+    get(index: number): T | undefined;
     /**
      * Retrieve the elements matched by the jQuery object. If the value of index is out of bounds — less than the negative number of elements or equal to or greater than the number of elements — it returns undefined.
      * @see \`{@link https://api.jquery.com/get/ }\`
@@ -4570,7 +4571,7 @@ display( $( "div" ).get().reverse() );
 </html>
 ```
      */
-    get(): TElement[];
+    get(): T[];
     /**
      * Reduce the set of matched elements to those that have a descendant that matches the selector or DOM element.
      * @param selector_contained _&#x40;param_ `selector_contained`
@@ -4702,7 +4703,7 @@ $( "div" ).one( "click", function() {
 </html>
 ```
      */
-    height(value_function: string | number | ((this: TElement, index: number, height: number) => string | number)): this;
+    height(value_function: string | number | ((this: T, index: number, height: number) => string | number)): this;
     /**
      * Get the current computed height for the first element in the set of matched elements.
      * @see \`{@link https://api.jquery.com/height/ }\`
@@ -4772,7 +4773,7 @@ $( "#getw" ).click(function() {
      * @see \`{@link https://api.jquery.com/hide/ }\`
      * @since 1.4.3
      */
-    hide(duration: JQuery.Duration, easing: string, complete: (this: TElement) => void): this;
+    hide(duration: JQuery.Duration, easing: string, complete: (this: T) => void): this;
     /**
      * Hide the matched elements.
      * @param duration A string or number determining how long the animation will run.
@@ -4861,7 +4862,7 @@ $( "div" ).click(function() {
 </html>
 ```
      */
-    hide(duration: JQuery.Duration, easing_complete: string | ((this: TElement) => void)): this;
+    hide(duration: JQuery.Duration, easing_complete: string | ((this: T) => void)): this;
     /**
      * Hide the matched elements.
      * @param duration_complete_options _&#x40;param_ `duration_complete_options`
@@ -4928,7 +4929,7 @@ $( "button" ).click(function() {
 </html>
 ```
      */
-    hide(duration_complete_options?: JQuery.Duration | ((this: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
+    hide(duration_complete_options?: JQuery.Duration | ((this: T) => void) | JQuery.EffectsOptions<T>): this;
     /**
      * Bind two handlers to the matched elements, to be executed when the mouse pointer enters and leaves the elements.
      * @param handlerIn A function to execute when the mouse pointer enters the element.
@@ -5003,9 +5004,9 @@ $( "td" ).hover(
 $( "td" ).off( "mouseenter mouseleave" );
 ```
      */
-    hover(handlerIn: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'mouseenter'> |
+    hover(handlerIn: JQuery.TypeEventHandler<T, null, T, T, 'mouseenter'> |
                      false,
-          handlerOut: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'mouseleave'> |
+          handlerOut: JQuery.TypeEventHandler<T, null, T, T, 'mouseleave'> |
                       false): this;
     /**
      * Bind a single handler to the matched elements, to be executed when the mouse pointer enters or leaves the elements.
@@ -5072,7 +5073,7 @@ $( "li" )
 </html>
 ```
      */
-    hover(handlerInOut: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'mouseenter' | 'mouseleave'> |
+    hover(handlerInOut: JQuery.TypeEventHandler<T, null, T, T, 'mouseenter' | 'mouseleave'> |
                         false): this;
     /**
      * Set the HTML contents of each element in the set of matched elements.
@@ -5148,7 +5149,7 @@ $( "div b" )
      */
     html(htmlString_function: JQuery.htmlString |
                               JQuery.Node |
-                              ((this: TElement, index: number, oldhtml: JQuery.htmlString) => JQuery.htmlString | JQuery.Node)): this;
+                              ((this: T, index: number, oldhtml: JQuery.htmlString) => JQuery.htmlString | JQuery.Node)): this;
     /**
      * Get the HTML contents of the first element in the set of matched elements.
      * @see \`{@link https://api.jquery.com/html/ }\`
@@ -5461,7 +5462,7 @@ $( "div" ).one( "click", function() {
 </html>
 ```
      */
-    innerHeight(value_function: string | number | ((this: TElement, index: number, height: number) => string | number)): this;
+    innerHeight(value_function: string | number | ((this: T, index: number, height: number) => string | number)): this;
     /**
      * Get the current computed height for the first element in the set of matched elements, including padding but not border.
      * @see \`{@link https://api.jquery.com/innerHeight/ }\`
@@ -5552,7 +5553,7 @@ modWidth -= 8;
 </html>
 ```
      */
-    innerWidth(value_function: string | number | ((this: TElement, index: number, width: number) => string | number)): this;
+    innerWidth(value_function: string | number | ((this: T, index: number, width: number) => string | number)): this;
     /**
      * Get the current computed inner width for the first element in the set of matched elements, including padding but not border.
      * @see \`{@link https://api.jquery.com/innerWidth/ }\`
@@ -5875,7 +5876,7 @@ $( "li" ).click(function() {
 </html>
 ```
      */
-    is(selector_function_selection_elements: JQuery.Selector | JQuery.TypeOrArray<Element> | JQuery | ((this: TElement, index: number, element: TElement) => boolean)): boolean;
+    is(selector_function_selection_elements: JQuery.Selector | JQuery.TypeOrArray<Element> | JQuery | ((this: T, index: number, element: T) => boolean)): boolean;
     /**
      * Bind an event handler to the "keydown" JavaScript event, or trigger that event on an element.
      * @param eventData An object containing data that will be passed to the event handler.
@@ -5889,7 +5890,7 @@ $( "li" ).click(function() {
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     keydown<TData>(eventData: TData,
-                   handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'keydown'>): this;
+                   handler: JQuery.TypeEventHandler<T, TData, T, T, 'keydown'>): this;
     /**
      * Bind an event handler to the "keydown" JavaScript event, or trigger that event on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -5961,7 +5962,7 @@ $( "#other" ).click(function() {
 </html>
 ```
      */
-    keydown(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'keydown'> |
+    keydown(handler?: JQuery.TypeEventHandler<T, null, T, T, 'keydown'> |
                       false): this;
     /**
      * Bind an event handler to the "keypress" JavaScript event, or trigger that event on an element.
@@ -5976,7 +5977,7 @@ $( "#other" ).click(function() {
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     keypress<TData>(eventData: TData,
-                    handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'keypress'>): this;
+                    handler: JQuery.TypeEventHandler<T, TData, T, T, 'keypress'>): this;
     /**
      * Bind an event handler to the "keypress" JavaScript event, or trigger that event on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -6048,7 +6049,7 @@ $( "#other" ).click(function() {
 </html>
 ```
      */
-    keypress(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'keypress'> |
+    keypress(handler?: JQuery.TypeEventHandler<T, null, T, T, 'keypress'> |
                        false): this;
     /**
      * Bind an event handler to the "keyup" JavaScript event, or trigger that event on an element.
@@ -6063,7 +6064,7 @@ $( "#other" ).click(function() {
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     keyup<TData>(eventData: TData,
-                 handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'keyup'>): this;
+                 handler: JQuery.TypeEventHandler<T, TData, T, T, 'keyup'>): this;
     /**
      * Bind an event handler to the "keyup" JavaScript event, or trigger that event on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -6136,7 +6137,7 @@ $( "#other").click(function() {
 </html>
 ```
      */
-    keyup(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'keyup'> |
+    keyup(handler?: JQuery.TypeEventHandler<T, null, T, T, 'keyup'> |
                     false): this;
     /**
      * Reduce the set of matched elements to the final one in the set.
@@ -6260,7 +6261,7 @@ $( "#feeds" ).load( "feeds.php", { limit: 25 }, function() {
      */
     load(url: string,
          data: string | JQuery.PlainObject,
-         complete: (this: TElement, responseText: string, textStatus: JQuery.Ajax.TextStatus, jqXHR: JQuery.jqXHR) => void): this;
+         complete: (this: T, responseText: string, textStatus: JQuery.Ajax.TextStatus, jqXHR: JQuery.jqXHR) => void): this;
     /**
      * Load data from the server and place the returned HTML into the matched element.
      * @param url A string containing the URL to which the request is sent.
@@ -6341,7 +6342,7 @@ $( "#objectID" ).load( "test.php", { "choices[]": [ "Jon", "Susan" ] } );
 ```
      */
     load(url: string,
-         complete_data?: ((this: TElement, responseText: string, textStatus: JQuery.Ajax.TextStatus, jqXHR: JQuery.jqXHR) => void) | string | JQuery.PlainObject): this;
+         complete_data?: ((this: T, responseText: string, textStatus: JQuery.Ajax.TextStatus, jqXHR: JQuery.jqXHR) => void) | string | JQuery.PlainObject): this;
     /**
      * Pass each element in the current matched set through a function, producing a new jQuery object containing the return values.
      * @param callback A function object that will be invoked for each element in the current set.
@@ -6487,7 +6488,7 @@ $( "input" ).click(function() {
 </html>
 ```
      */
-    map<TReturn>(callback: (this: TElement, index: number, domElement: TElement) => JQuery.TypeOrArray<TReturn> | null | undefined): JQuery<TReturn>;
+    map<TReturn>(callback: (this: T, index: number, domElement: T) => JQuery.TypeOrArray<TReturn> | null | undefined): JQuery<TReturn>;
     /**
      * Bind an event handler to the "mousedown" JavaScript event, or trigger that event on an element.
      * @param eventData An object containing data that will be passed to the event handler.
@@ -6501,7 +6502,7 @@ $( "input" ).click(function() {
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     mousedown<TData>(eventData: TData,
-                     handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'mousedown'>): this;
+                     handler: JQuery.TypeEventHandler<T, TData, T, T, 'mousedown'>): this;
     /**
      * Bind an event handler to the "mousedown" JavaScript event, or trigger that event on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -6539,7 +6540,7 @@ $( "p" )
 </html>
 ```
      */
-    mousedown(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'mousedown'> |
+    mousedown(handler?: JQuery.TypeEventHandler<T, null, T, T, 'mousedown'> |
                         false): this;
     /**
      * Bind an event handler to be fired when the mouse enters an element, or trigger that handler on an element.
@@ -6554,7 +6555,7 @@ $( "p" )
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     mouseenter<TData>(eventData: TData,
-                      handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'mouseenter'>): this;
+                      handler: JQuery.TypeEventHandler<T, TData, T, T, 'mouseenter'>): this;
     /**
      * Bind an event handler to be fired when the mouse enters an element, or trigger that handler on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -6635,7 +6636,7 @@ $( "div.enterleave" )
 </html>
 ```
      */
-    mouseenter(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'mouseenter'> |
+    mouseenter(handler?: JQuery.TypeEventHandler<T, null, T, T, 'mouseenter'> |
                          false): this;
     /**
      * Bind an event handler to be fired when the mouse leaves an element, or trigger that handler on an element.
@@ -6650,7 +6651,7 @@ $( "div.enterleave" )
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     mouseleave<TData>(eventData: TData,
-                      handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'mouseleave'>): this;
+                      handler: JQuery.TypeEventHandler<T, TData, T, T, 'mouseleave'>): this;
     /**
      * Bind an event handler to be fired when the mouse leaves an element, or trigger that handler on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -6729,7 +6730,7 @@ $( "div.enterleave" )
 </html>
 ```
      */
-    mouseleave(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'mouseleave'> |
+    mouseleave(handler?: JQuery.TypeEventHandler<T, null, T, T, 'mouseleave'> |
                          false): this;
     /**
      * Bind an event handler to the "mousemove" JavaScript event, or trigger that event on an element.
@@ -6744,7 +6745,7 @@ $( "div.enterleave" )
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     mousemove<TData>(eventData: TData,
-                     handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'mousemove'>): this;
+                     handler: JQuery.TypeEventHandler<T, TData, T, T, 'mousemove'>): this;
     /**
      * Bind an event handler to the "mousemove" JavaScript event, or trigger that event on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -6808,7 +6809,7 @@ $( "div" ).mousemove(function( event ) {
 </html>
 ```
      */
-    mousemove(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'mousemove'> |
+    mousemove(handler?: JQuery.TypeEventHandler<T, null, T, T, 'mousemove'> |
                         false): this;
     /**
      * Bind an event handler to the "mouseout" JavaScript event, or trigger that event on an element.
@@ -6823,7 +6824,7 @@ $( "div" ).mousemove(function( event ) {
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     mouseout<TData>(eventData: TData,
-                    handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'mouseout'>): this;
+                    handler: JQuery.TypeEventHandler<T, TData, T, T, 'mouseout'>): this;
     /**
      * Bind an event handler to the "mouseout" JavaScript event, or trigger that event on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -6904,7 +6905,7 @@ $( "div.enterleave" )
 </html>
 ```
      */
-    mouseout(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'mouseout'> |
+    mouseout(handler?: JQuery.TypeEventHandler<T, null, T, T, 'mouseout'> |
                        false): this;
     /**
      * Bind an event handler to the "mouseover" JavaScript event, or trigger that event on an element.
@@ -6919,7 +6920,7 @@ $( "div.enterleave" )
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     mouseover<TData>(eventData: TData,
-                     handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'mouseover'>): this;
+                     handler: JQuery.TypeEventHandler<T, TData, T, T, 'mouseover'>): this;
     /**
      * Bind an event handler to the "mouseover" JavaScript event, or trigger that event on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -7000,7 +7001,7 @@ $( "div.enterleave" )
 </html>
 ```
      */
-    mouseover(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'mouseover'> |
+    mouseover(handler?: JQuery.TypeEventHandler<T, null, T, T, 'mouseover'> |
                         false): this;
     /**
      * Bind an event handler to the "mouseup" JavaScript event, or trigger that event on an element.
@@ -7015,7 +7016,7 @@ $( "div.enterleave" )
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     mouseup<TData>(eventData: TData,
-                   handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'mouseup'>): this;
+                   handler: JQuery.TypeEventHandler<T, TData, T, T, 'mouseup'>): this;
     /**
      * Bind an event handler to the "mouseup" JavaScript event, or trigger that event on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -7053,7 +7054,7 @@ $( "p" )
 </html>
 ```
      */
-    mouseup(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'mouseup'> |
+    mouseup(handler?: JQuery.TypeEventHandler<T, null, T, T, 'mouseup'> |
                       false): this;
     /**
      * Get the immediately following sibling of each element in the set of matched elements. If a selector is provided, it retrieves the next sibling only if it matches that selector.
@@ -7318,7 +7319,7 @@ $( "p" ).not( "#selected" );
 $( "p" ).not( $( "div p.selected" ) );
 ```
      */
-    not(selector_function_selection: JQuery.Selector | JQuery.TypeOrArray<Element> | JQuery | ((this: TElement, index: number, element: TElement) => boolean)): this;
+    not(selector_function_selection: JQuery.Selector | JQuery.TypeOrArray<Element> | JQuery | ((this: T, index: number, element: T) => boolean)): this;
     /**
      * Remove an event handler.
      * @param events One or more space-separated event types and optional namespaces, or just namespaces, such as
@@ -7389,7 +7390,7 @@ $( "body" ).off( "click", "p", foo );
     off<TType extends string>(
         events: TType,
         selector: JQuery.Selector,
-        handler: JQuery.TypeEventHandler<TElement, any, any, any, TType> |
+        handler: JQuery.TypeEventHandler<T, any, any, any, TType> |
                  false
     ): this;
     /**
@@ -7424,7 +7425,7 @@ $( "form" ).off( ".validator" );
     off<TType extends string>(
         events: TType,
         selector_handler?: JQuery.Selector |
-                           JQuery.TypeEventHandler<TElement, any, any, any, TType> |
+                           JQuery.TypeEventHandler<T, any, any, any, TType> |
                            false
     ): this;
     /**
@@ -7435,7 +7436,7 @@ $( "form" ).off( ".validator" );
      * @see \`{@link https://api.jquery.com/off/ }\`
      * @since 1.7
      */
-    off(events: JQuery.TypeEventHandlers<TElement, any, any, any>,
+    off(events: JQuery.TypeEventHandlers<T, any, any, any>,
         selector?: JQuery.Selector): this;
     /**
      * Remove an event handler.
@@ -7447,7 +7448,7 @@ $( "form" ).off( ".validator" );
 $( "p" ).off();
 ```
      */
-    off(event?: JQuery.TriggeredEvent<TElement>): this;
+    off(event?: JQuery.TriggeredEvent<T>): this;
     /**
      * Set the current coordinates of every element in the set of matched elements, relative to the document.
      * @param coordinates_function _&#x40;param_ `coordinates_function`
@@ -7485,7 +7486,7 @@ $( "p:last" ).offset({ top: 10, left: 30 });
 </html>
 ```
      */
-    offset(coordinates_function: JQuery.CoordinatesPartial | ((this: TElement, index: number, coords: JQuery.Coordinates) => JQuery.CoordinatesPartial)): this;
+    offset(coordinates_function: JQuery.CoordinatesPartial | ((this: T, index: number, coords: JQuery.Coordinates) => JQuery.CoordinatesPartial)): this;
     /**
      * Get the current coordinates of the first element in the set of matched elements, relative to the document.
      * @see \`{@link https://api.jquery.com/offset/ }\`
@@ -7625,7 +7626,7 @@ $( "*", document.body ).click(function( event ) {
         events: TType,
         selector: JQuery.Selector,
         data: TData,
-        handler: JQuery.TypeEventHandler<TElement, TData, any, any, TType>
+        handler: JQuery.TypeEventHandler<T, TData, any, any, TType>
     ): this;
     /**
      * Attach an event handler function for one or more events to the selected elements.
@@ -7642,7 +7643,7 @@ $( "*", document.body ).click(function( event ) {
         events: TType,
         selector: null | undefined,
         data: TData,
-        handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, TType>
+        handler: JQuery.TypeEventHandler<T, TData, T, T, TType>
     ): this;
     /**
      * Attach an event handler function for one or more events to the selected elements.
@@ -7722,7 +7723,7 @@ $( "body" ).on( "click", "a", function( event ) {
     on<TType extends string>(
         events: TType,
         selector: JQuery.Selector,
-        handler: JQuery.TypeEventHandler<TElement, undefined, any, any, TType> |
+        handler: JQuery.TypeEventHandler<T, undefined, any, any, TType> |
                  false
     ): this;
     /**
@@ -7744,7 +7745,7 @@ $( "p" ).on( "click", { foo: "bar" }, myHandler );
        TData>(
         events: TType,
         data: TData,
-        handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, TType>
+        handler: JQuery.TypeEventHandler<T, TData, T, T, TType>
     ): this;
     /**
      * Attach an event handler function for one or more events to the selected elements.
@@ -7912,7 +7913,7 @@ $( "#cart" ).on( "mouseenter mouseleave", function( event ) {
      */
     on<TType extends string>(
         events: TType,
-        handler: JQuery.TypeEventHandler<TElement, undefined, TElement, TElement, TType> |
+        handler: JQuery.TypeEventHandler<T, undefined, T, T, TType> |
                  false
     ): this;
     /**
@@ -8019,7 +8020,7 @@ $( "#cart" ).on( "mouseenter mouseleave", function( event ) {
      * @since 1.7
      */
     on<TData>(
-        events: JQuery.TypeEventHandlers<TElement, TData, any, any>,
+        events: JQuery.TypeEventHandlers<T, TData, any, any>,
         selector: JQuery.Selector,
         data: TData
     ): this;
@@ -8034,7 +8035,7 @@ $( "#cart" ).on( "mouseenter mouseleave", function( event ) {
      * @since 1.7
      */
     on<TData>(
-        events: JQuery.TypeEventHandlers<TElement, TData, TElement, TElement>,
+        events: JQuery.TypeEventHandlers<T, TData, T, T>,
         selector: null | undefined,
         data: TData
     ): this;
@@ -8047,7 +8048,7 @@ $( "#cart" ).on( "mouseenter mouseleave", function( event ) {
      * @see \`{@link https://api.jquery.com/on/ }\`
      * @since 1.7
      */
-    on(events: JQuery.TypeEventHandlers<TElement, undefined, any, any>,
+    on(events: JQuery.TypeEventHandlers<T, undefined, any, any>,
        selector: JQuery.Selector
     ): this;
     /**
@@ -8059,7 +8060,7 @@ $( "#cart" ).on( "mouseenter mouseleave", function( event ) {
      * @since 1.7
      */
     on<TData>(
-        events: JQuery.TypeEventHandlers<TElement, TData, TElement, TElement>,
+        events: JQuery.TypeEventHandlers<T, TData, T, T>,
         data: TData
     ): this;
     /**
@@ -8110,7 +8111,7 @@ $( "div.test" ).on({
 </html>
 ```
      */
-    on(events: JQuery.TypeEventHandlers<TElement, undefined, TElement, TElement>): this;
+    on(events: JQuery.TypeEventHandlers<T, undefined, T, T>): this;
     /**
      * Attach a handler to an event for the elements. The handler is executed at most once per element per event type.
      * @param events One or more space-separated event types and optional namespaces, such as "click" or "keydown.myPlugin".
@@ -8126,7 +8127,7 @@ $( "div.test" ).on({
         events: TType,
         selector: JQuery.Selector,
         data: TData,
-        handler: JQuery.TypeEventHandler<TElement, TData, any, any, TType>
+        handler: JQuery.TypeEventHandler<T, TData, any, any, TType>
     ): this;
     /**
      * Attach a handler to an event for the elements. The handler is executed at most once per element per event type.
@@ -8143,7 +8144,7 @@ $( "div.test" ).on({
         events: TType,
         selector: null | undefined,
         data: TData,
-        handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, TType>
+        handler: JQuery.TypeEventHandler<T, TData, T, T, TType>
     ): this;
     /**
      * Attach a handler to an event for the elements. The handler is executed at most once per element per event type.
@@ -8158,7 +8159,7 @@ $( "div.test" ).on({
     one<TType extends string>(
         events: TType,
         selector: JQuery.Selector,
-        handler: JQuery.TypeEventHandler<TElement, undefined, any, any, TType> |
+        handler: JQuery.TypeEventHandler<T, undefined, any, any, TType> |
                  false
     ): this;
     /**
@@ -8173,7 +8174,7 @@ $( "div.test" ).on({
         TData>(
         events: TType,
         data: TData,
-        handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, TType>
+        handler: JQuery.TypeEventHandler<T, TData, T, T, TType>
     ): this;
     /**
      * Attach a handler to an event for the elements. The handler is executed at most once per element per event type.
@@ -8265,7 +8266,7 @@ $(".target").one("click mouseenter", function() {
      */
     one<TType extends string>(
         events: TType,
-        handler: JQuery.TypeEventHandler<TElement, undefined, TElement, TElement, TType>|
+        handler: JQuery.TypeEventHandler<T, undefined, T, T, TType>|
                  false
     ): this;
     /**
@@ -8279,7 +8280,7 @@ $(".target").one("click mouseenter", function() {
      * @since 1.7
      */
     one<TData>(
-        events: JQuery.TypeEventHandlers<TElement, TData, any, any>,
+        events: JQuery.TypeEventHandlers<T, TData, any, any>,
         selector: JQuery.Selector,
         data: TData
     ): this;
@@ -8294,7 +8295,7 @@ $(".target").one("click mouseenter", function() {
      * @since 1.7
      */
     one<TData>(
-        events: JQuery.TypeEventHandlers<TElement, TData, TElement, TElement>,
+        events: JQuery.TypeEventHandlers<T, TData, T, T>,
         selector: null | undefined,
         data: TData
     ): this;
@@ -8307,7 +8308,7 @@ $(".target").one("click mouseenter", function() {
      * @see \`{@link https://api.jquery.com/one/ }\`
      * @since 1.7
      */
-    one(events: JQuery.TypeEventHandlers<TElement, undefined, any, any>,
+    one(events: JQuery.TypeEventHandlers<T, undefined, any, any>,
         selector: JQuery.Selector): this;
     /**
      * Attach a handler to an event for the elements. The handler is executed at most once per element per event type.
@@ -8318,7 +8319,7 @@ $(".target").one("click mouseenter", function() {
      * @since 1.7
      */
     one<TData>(
-        events: JQuery.TypeEventHandlers<TElement, TData, TElement, TElement>,
+        events: JQuery.TypeEventHandlers<T, TData, T, T>,
         data: TData
     ): this;
     /**
@@ -8328,7 +8329,7 @@ $(".target").one("click mouseenter", function() {
      * @see \`{@link https://api.jquery.com/one/ }\`
      * @since 1.7
      */
-    one(events: JQuery.TypeEventHandlers<TElement, undefined, TElement, TElement>): this;
+    one(events: JQuery.TypeEventHandlers<T, undefined, T, T>): this;
     /**
      * Set the CSS outer height of each element in the set of matched elements.
      * @param value_function _&#x40;param_ `value_function`
@@ -8384,7 +8385,7 @@ $( "div" ).one( "click", function() {
 </html>
 ```
      */
-    outerHeight(value_function: string | number | ((this: TElement, index: number, height: number) => string | number),
+    outerHeight(value_function: string | number | ((this: T, index: number, height: number) => string | number),
                 includeMargin?: boolean): this;
     /**
      * Get the current computed outer height (including padding, border, and optionally margin) for the first element in the set of matched elements.
@@ -8478,7 +8479,7 @@ $( "div" ).one( "click", function() {
 </html>
 ```
      */
-    outerWidth(value_function: string | number | ((this: TElement, index: number, width: number) => string | number),
+    outerWidth(value_function: string | number | ((this: T, index: number, width: number) => string | number),
                includeMargin?: boolean): this;
     /**
      * Get the current computed outer width (including padding, border, and optionally margin) for the first element in the set of matched elements.
@@ -8591,7 +8592,7 @@ $( "p" ).parent( ".selected" ).css( "background", "yellow" );
 </html>
 ```
      */
-    parent(selector?: JQuery.Selector): this;
+    parent<T extends string | undefined>(selector?: T): undefined extends T ? this : JQuery<ParseSelector<Extract<T, string>>>
     /**
      * Get the ancestors of each element in the current set of matched elements, optionally filtered by a selector.
      * @param selector A string containing a selector expression to match elements against.
@@ -8703,6 +8704,7 @@ $( "span" ).click(function() {
 </html>
 ```
      */
+    parents<T extends string>(selector: T): JQuery<ParseSelector<T>>;
     parents<K extends keyof HTMLElementTagNameMap>(selector: K | JQuery<K>): JQuery<HTMLElementTagNameMap[K]>;
     parents<K extends keyof SVGElementTagNameMap>(selector: K | JQuery<K>): JQuery<SVGElementTagNameMap[K]>;
     // eslint-disable-next-line no-unnecessary-generics
@@ -8760,6 +8762,7 @@ $( "li.item-2" )
 </html>
 ```
      */
+    parentsUntil<T extends string>(selector: T): JQuery<ParseSelector<T>>;
     parentsUntil(selector_element?: JQuery.Selector | Element | JQuery, filter?: JQuery.Selector): this;
     /**
      * Get the current coordinates of the first element in the set of matched elements, relative to the offset parent.
@@ -8894,7 +8897,7 @@ $( "p" ).prepend( $( "b" ) );
      * @see \`{@link https://api.jquery.com/prepend/ }\`
      * @since 1.4
      */
-    prepend(funсtion: (this: TElement, index: number, html: string) => JQuery.htmlString | JQuery.TypeOrArray<JQuery.Node | JQuery<JQuery.Node>>): this;
+    prepend(funсtion: (this: T, index: number, html: string) => JQuery.htmlString | JQuery.TypeOrArray<JQuery.Node | JQuery<JQuery.Node>>): this;
     /**
      * Insert every element in the set of matched elements to the beginning of the target.
      * @param target A selector, element, HTML string, array of elements, or jQuery object; the matched set of elements
@@ -9236,8 +9239,12 @@ $( "button" ).on( "click", function() {
      * @see \`{@link https://api.jquery.com/prop/ }\`
      * @since 1.6
      */
-    prop(propertyName: string,
-         value_function: string | number | boolean | symbol | object | null | undefined | ((this: TElement, index: number, oldPropertyValue: any) => any)): this;
+    // prop <K extends keyof GettableProperties<T>>(propertyName: K): T[K] | undefined;
+    
+    prop <K extends keyof GettableProperties<T>> (
+      propertyName: K,
+      value: GettableProperties<T>[K] | null | undefined
+    ): this
     /**
      * Set one or more properties for the set of matched elements.
      * @param properties An object of property-value pairs to set.
@@ -9278,7 +9285,9 @@ $( "input[type='checkbox']" ).prop({
 </html>
 ```
      */
-    prop(properties: JQuery.PlainObject): this;
+    prop(properties: {
+      [K in keyof GettableProperties<T>]?: GettableProperties<T>[K] | null | undefined;
+    }): this
     /**
      * Get the value of a property for the first element in the set of matched elements.
      * @param propertyName The name of the property to get.
@@ -9321,7 +9330,8 @@ $( "input" ).change(function() {
 </html>
 ```
      */
-    prop(propertyName: string): any;
+    prop <K extends keyof GettableProperties<T>>(propertyName: K): T[K] | undefined;
+    prop (propertyName: string): any;
     /**
      * Add a collection of DOM elements onto the jQuery stack.
      * @param elements An array of elements to push onto the stack and make into a new jQuery object.
@@ -9407,7 +9417,7 @@ $( "#stop" ).click(function() {
 </html>
 ```
      */
-    queue(queueName: string, newQueue: JQuery.TypeOrArray<JQuery.QueueFunction<TElement>>): this;
+    queue(queueName: string, newQueue: JQuery.TypeOrArray<JQuery.QueueFunction<T>>): this;
     /**
      * Manipulate the queue of functions to be executed, once for each matched element.
      * @param newQueue The new function to add to the queue, with a function to call that will dequeue the next item.
@@ -9463,7 +9473,7 @@ $( document.body ).click(function() {
 </html>
 ```
      */
-    queue(newQueue: JQuery.TypeOrArray<JQuery.QueueFunction<TElement>>): this;
+    queue(newQueue: JQuery.TypeOrArray<JQuery.QueueFunction<T>>): this;
     /**
      * Show the queue of functions to be executed on the matched elements.
      * @param queueName A string containing the name of the queue. Defaults to fx, the standard effects queue.
@@ -9807,7 +9817,7 @@ $( "p:eq(1)" ).removeClass();
 </html>
 ```
      */
-    removeClass(className_function?: JQuery.TypeOrArray<string> | ((this: TElement, index: number, className: string) => string)): this;
+    removeClass(className_function?: JQuery.TypeOrArray<string> | ((this: T, index: number, className: string) => string)): this;
     /**
      * Remove a previously-stored piece of data.
      * @param name A string naming the piece of data to delete.
@@ -10079,7 +10089,7 @@ $( "button" ).on( "click", function() {
                                      JQuery<JQuery.Node> |
                                      JQuery.TypeOrArray<Element> |
                                      JQuery.Node |
-                                     ((this: TElement, index: number, oldhtml: JQuery.htmlString) => JQuery.htmlString |
+                                     ((this: T, index: number, oldhtml: JQuery.htmlString) => JQuery.htmlString |
                                                                                                      JQuery<JQuery.Node> |
                                                                                                      JQuery.TypeOrArray<Element> |
                                                                                                      JQuery.Node)): this;
@@ -10096,7 +10106,7 @@ $( "button" ).on( "click", function() {
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     resize<TData>(eventData: TData,
-                  handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'resize'>): this;
+                  handler: JQuery.TypeEventHandler<T, TData, T, T, 'resize'>): this;
     /**
      * Bind an event handler to the "resize" JavaScript event, or trigger that event on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -10114,7 +10124,7 @@ $( window ).resize(function() {
 });
 ```
      */
-    resize(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'resize'> |
+    resize(handler?: JQuery.TypeEventHandler<T, null, T, T, 'resize'> |
                      false): this;
     /**
      * Bind an event handler to the "scroll" JavaScript event, or trigger that event on an element.
@@ -10129,7 +10139,7 @@ $( window ).resize(function() {
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     scroll<TData>(eventData: TData,
-                  handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'scroll'>): this;
+                  handler: JQuery.TypeEventHandler<T, TData, T, T, 'scroll'>): this;
     /**
      * Bind an event handler to the "scroll" JavaScript event, or trigger that event on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -10179,7 +10189,7 @@ $( window ).scroll(function() {
 </html>
 ```
      */
-    scroll(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'scroll'> |
+    scroll(handler?: JQuery.TypeEventHandler<T, null, T, T, 'scroll'> |
                      false): this;
     /**
      * Set the current horizontal position of the scroll bar for each of the set of matched elements.
@@ -10354,7 +10364,7 @@ $( "p:last" ).text( "scrollTop:" + p.scrollTop() );
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     select<TData>(eventData: TData,
-                  handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'select'>): this;
+                  handler: JQuery.TypeEventHandler<T, TData, T, T, 'select'>): this;
     /**
      * Bind an event handler to the "select" JavaScript event, or trigger that event on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -10403,7 +10413,7 @@ $( ":input" ).select(function() {
 $( "input" ).select();
 ```
      */
-    select(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'select'> |
+    select(handler?: JQuery.TypeEventHandler<T, null, T, T, 'select'> |
                      false): this;
     /**
      * Encode a set of form elements as a string for submission.
@@ -10558,7 +10568,7 @@ $( "input" ).select();
      * @see \`{@link https://api.jquery.com/show/ }\`
      * @since 1.4.3
      */
-    show(duration: JQuery.Duration, easing: string, complete: (this: TElement) => void): this;
+    show(duration: JQuery.Duration, easing: string, complete: (this: T) => void): this;
     /**
      * Display the matched elements.
      * @param duration A string or number determining how long the animation will run.
@@ -10668,7 +10678,7 @@ $( "form" ).submit(function( event ) {
 </html>
 ```
      */
-    show(duration: JQuery.Duration, easing_complete: string | ((this: TElement) => void)): this;
+    show(duration: JQuery.Duration, easing_complete: string | ((this: T) => void)): this;
     /**
      * Display the matched elements.
      * @param duration_complete_options _&#x40;param_ `duration_complete_options`
@@ -10707,7 +10717,7 @@ $( "button" ).click(function() {
 </html>
 ```
      */
-    show(duration_complete_options?: JQuery.Duration | ((this: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
+    show(duration_complete_options?: JQuery.Duration | ((this: T) => void) | JQuery.EffectsOptions<T>): this;
     /**
      * Get the siblings of each element in the set of matched elements, optionally filtered by a selector.
      * @param selector A string containing a selector expression to match elements against.
@@ -10901,7 +10911,7 @@ $( "p" ).slice( -1 ).wrapInner( "<b></b>" );
      * @see \`{@link https://api.jquery.com/slideDown/ }\`
      * @since 1.4.3
      */
-    slideDown(duration: JQuery.Duration, easing: string, complete?: (this: TElement) => void): this;
+    slideDown(duration: JQuery.Duration, easing: string, complete?: (this: T) => void): this;
     /**
      * Display the matched elements with a sliding motion.
      * @param duration_easing _&#x40;param_ `duration_easing`
@@ -10968,7 +10978,7 @@ $( "div" ).click(function() {
 </html>
 ```
      */
-    slideDown(duration_easing: JQuery.Duration | string, complete: (this: TElement) => void): this;
+    slideDown(duration_easing: JQuery.Duration | string, complete: (this: T) => void): this;
     /**
      * Display the matched elements with a sliding motion.
      * @param duration_easing_complete_options _&#x40;param_ `duration_easing_complete_options`
@@ -11020,7 +11030,7 @@ $( document.body ).click(function () {
 </html>
 ```
      */
-    slideDown(duration_easing_complete_options?: JQuery.Duration | string | ((this: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
+    slideDown(duration_easing_complete_options?: JQuery.Duration | string | ((this: T) => void) | JQuery.EffectsOptions<T>): this;
     /**
      * Display or hide the matched elements with a sliding motion.
      * @param duration A string or number determining how long the animation will run.
@@ -11029,7 +11039,7 @@ $( document.body ).click(function () {
      * @see \`{@link https://api.jquery.com/slideToggle/ }\`
      * @since 1.4.3
      */
-    slideToggle(duration: JQuery.Duration, easing: string, complete?: (this: TElement) => void): this;
+    slideToggle(duration: JQuery.Duration, easing: string, complete?: (this: T) => void): this;
     /**
      * Display or hide the matched elements with a sliding motion.
      * @param duration_easing _&#x40;param_ `duration_easing`
@@ -11099,7 +11109,7 @@ $( "#aa" ).click(function() {
 </html>
 ```
      */
-    slideToggle(duration_easing: JQuery.Duration | string, complete: (this: TElement) => void): this;
+    slideToggle(duration_easing: JQuery.Duration | string, complete: (this: T) => void): this;
     /**
      * Display or hide the matched elements with a sliding motion.
      * @param duration_easing_complete_options _&#x40;param_ `duration_easing_complete_options`
@@ -11144,7 +11154,7 @@ $( "button" ).click(function() {
 </html>
 ```
      */
-    slideToggle(duration_easing_complete_options?: JQuery.Duration | string | ((this: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
+    slideToggle(duration_easing_complete_options?: JQuery.Duration | string | ((this: T) => void) | JQuery.EffectsOptions<T>): this;
     /**
      * Hide the matched elements with a sliding motion.
      * @param duration A string or number determining how long the animation will run.
@@ -11153,7 +11163,7 @@ $( "button" ).click(function() {
      * @see \`{@link https://api.jquery.com/slideUp/ }\`
      * @since 1.4.3
      */
-    slideUp(duration: JQuery.Duration, easing: string, complete?: (this: TElement) => void): this;
+    slideUp(duration: JQuery.Duration, easing: string, complete?: (this: T) => void): this;
     /**
      * Hide the matched elements with a sliding motion.
      * @param duration_easing _&#x40;param_ `duration_easing`
@@ -11209,7 +11219,7 @@ $( "button" ).click(function() {
 </html>
 ```
      */
-    slideUp(duration_easing: JQuery.Duration | string, complete: (this: TElement) => void): this;
+    slideUp(duration_easing: JQuery.Duration | string, complete: (this: T) => void): this;
     /**
      * Hide the matched elements with a sliding motion.
      * @param duration_easing_complete_options _&#x40;param_ `duration_easing_complete_options`
@@ -11262,7 +11272,7 @@ $( document.body ).click(function() {
 </html>
 ```
      */
-    slideUp(duration_easing_complete_options?: JQuery.Duration | string | ((this: TElement) => void) | JQuery.EffectsOptions<TElement>): this;
+    slideUp(duration_easing_complete_options?: JQuery.Duration | string | ((this: T) => void) | JQuery.EffectsOptions<T>): this;
     /**
      * Stop the currently-running animation on the matched elements.
      * @param queue The name of the queue in which to stop animations.
@@ -11375,7 +11385,7 @@ $( "#toggle" ).on( "click", function() {
      * **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
      */
     submit<TData>(eventData: TData,
-                  handler: JQuery.TypeEventHandler<TElement, TData, TElement, TElement, 'submit'>): this;
+                  handler: JQuery.TypeEventHandler<T, TData, T, T, 'submit'>): this;
     /**
      * Bind an event handler to the "submit" JavaScript event, or trigger that event on an element.
      * @param handler A function to execute each time the event is triggered.
@@ -11444,7 +11454,7 @@ $( "form" ).submit(function() {
 $( "form:first" ).submit();
 ```
      */
-    submit(handler?: JQuery.TypeEventHandler<TElement, null, TElement, TElement, 'submit'> |
+    submit(handler?: JQuery.TypeEventHandler<T, null, T, T, 'submit'> |
                      false): this;
     /**
      * Set the content of each element in the set of matched elements to the specified text.
@@ -11484,7 +11494,7 @@ $( "p" ).text( "<b>Some</b> new text." );
 </html>
 ```
      */
-    text(text_function: string | number | boolean | ((this: TElement, index: number, text: string) => string | number | boolean)): this;
+    text(text_function: string | number | boolean | ((this: T, index: number, text: string) => string | number | boolean)): this;
     /**
      * Get the combined text contents of each element in the set of matched elements, including their descendants.
      * @see \`{@link https://api.jquery.com/text/ }\`
@@ -11563,7 +11573,7 @@ disp( $( "div" ).toArray().reverse() );
 </html>
 ```
      */
-    toArray(): TElement[];
+    toArray(): T[];
     /**
      * Display or hide the matched elements.
      * @param duration A string or number determining how long the animation will run.
@@ -11572,7 +11582,7 @@ disp( $( "div" ).toArray().reverse() );
      * @see \`{@link https://api.jquery.com/toggle/ }\`
      * @since 1.4.3
      */
-    toggle(duration: JQuery.Duration, easing: string, complete?: (this: TElement) => void): this;
+    toggle(duration: JQuery.Duration, easing: string, complete?: (this: T) => void): this;
     /**
      * Display or hide the matched elements.
      * @param duration A string or number determining how long the animation will run.
@@ -11580,7 +11590,7 @@ disp( $( "div" ).toArray().reverse() );
      * @see \`{@link https://api.jquery.com/toggle/ }\`
      * @since 1.0
      */
-    toggle(duration: JQuery.Duration, complete: (this: TElement) => void): this;
+    toggle(duration: JQuery.Duration, complete: (this: T) => void): this;
     /**
      * Display or hide the matched elements.
      * @param duration_complete_options_display _&#x40;param_ `duration_complete_options_display`
@@ -11673,7 +11683,7 @@ $( "button" ).click(function() {
 </html>
 ```
      */
-    toggle(duration_complete_options_display?: JQuery.Duration | ((this: TElement) => void) | JQuery.EffectsOptions<TElement> | boolean): this;
+    toggle(duration_complete_options_display?: JQuery.Duration | ((this: T) => void) | JQuery.EffectsOptions<T> | boolean): this;
     /**
      * Add or remove one or more classes from each element in the set of matched elements, depending on either the class's presence or the value of the state argument.
      * @param className_function _&#x40;param_ `className_function`
@@ -11845,7 +11855,7 @@ $( "a" ).on( "click", function( event ) {
 </html>
 ```
      */
-    toggleClass<TState extends boolean>(className_function: JQuery.TypeOrArray<string> | ((this: TElement, index: number, className: string, state: TState) => string),
+    toggleClass<TState extends boolean>(className_function: JQuery.TypeOrArray<string> | ((this: T, index: number, className: string, state: TState) => string),
                                         state?: TState): this;
     /**
      * Add or remove one or more classes from each element in the set of matched elements, depending on either the class's presence or the value of the state argument.
@@ -12066,7 +12076,7 @@ $( "p" ).unbind( "click", foo ); // ... foo will no longer be called.
      */
     unbind<TType extends string>(
         event: TType,
-        handler: JQuery.TypeEventHandler<TElement, any, TElement, TElement, TType> |
+        handler: JQuery.TypeEventHandler<T, any, T, T, TType> |
                  false
     ): this;
     /**
@@ -12089,7 +12099,7 @@ $( "p" ).unbind();
 $( "p" ).unbind( "click" );
 ```
      */
-    unbind(event?: string | JQuery.TriggeredEvent<TElement>): this;
+    unbind(event?: string | JQuery.TriggeredEvent<T>): this;
     /**
      * Remove a handler from the event for all elements which match the current selector, based upon a specific set of root elements.
      * @param selector A selector which will be used to filter the event results.
@@ -12162,7 +12172,7 @@ $( "body" ).undelegate( "p", "click", foo );
     undelegate<TType extends string>(
         selector: JQuery.Selector,
         eventType: TType,
-        handler: JQuery.TypeEventHandler<TElement, any, any, any, TType> |
+        handler: JQuery.TypeEventHandler<T, any, any, any, TType> |
                  false
     ): this;
     /**
@@ -12183,7 +12193,7 @@ $( "body" ).undelegate( "p", "click", foo );
      */
     undelegate(selector: JQuery.Selector,
                eventType_events: string |
-                                 JQuery.TypeEventHandlers<TElement, any, any, any>): this;
+                                 JQuery.TypeEventHandlers<T, any, any, any>): this;
     /**
      * Remove a handler from the event for all elements which match the current selector, based upon a specific set of root elements.
      * @param namespace A selector which will be used to filter the event results.
@@ -12382,7 +12392,7 @@ $( "input").val([ "check1", "check2", "radio1" ]);
 </html>
 ```
      */
-    val(value_function: string | number | string[] | ((this: TElement, index: number, value: string) => string)): this;
+    val(value_function: string | number | string[] | ((this: T, index: number, value: string) => string)): this;
     /**
      * Get the current value of the first element in the set of matched elements.
      * @see \`{@link https://api.jquery.com/val/ }\`
@@ -12525,7 +12535,7 @@ $( "div" ).one( "click", function() {
 </html>
 ```
      */
-    width(value_function: string | number | ((this: TElement, index: number, value: number) => string | number)): this;
+    width(value_function: string | number | ((this: T, index: number, value: number) => string | number)): this;
     /**
      * Get the current computed width for the first element in the set of matched elements.
      * @see \`{@link https://api.jquery.com/width/ }\`
@@ -12737,7 +12747,7 @@ $( "p" ).wrap( $( ".doublediv" ) );
 </html>
 ```
      */
-    wrap(wrappingElement_function: JQuery.Selector | JQuery.htmlString | Element | JQuery | ((this: TElement, index: number) => string | JQuery)): this;
+    wrap(wrappingElement_function: JQuery.Selector | JQuery.htmlString | Element | JQuery | ((this: T, index: number) => string | JQuery)): this;
     /**
      * Wrap an HTML structure around all elements in the set of matched elements.
      * @param wrappingElement_function _&#x40;param_ `wrappingElement_function`
@@ -12888,7 +12898,7 @@ $( "p" ).wrapAll( $( ".doublediv" ) );
 </html>
 ```
      */
-    wrapAll(wrappingElement_function: JQuery.Selector | JQuery.htmlString | Element | JQuery | ((this: TElement) => string | JQuery)): this;
+    wrapAll(wrappingElement_function: JQuery.Selector | JQuery.htmlString | Element | JQuery | ((this: T) => string | JQuery)): this;
     /**
      * Wrap an HTML structure around the content of each element in the set of matched elements.
      * @param wrappingElement_function _&#x40;param_ `wrappingElement_function`
@@ -13018,7 +13028,7 @@ $( "p" ).wrapInner( $( "<span class='red'></span>" ) );
 </html>
 ```
      */
-    wrapInner(wrappingElement_function: JQuery.Selector | JQuery.htmlString | Element | JQuery | ((this: TElement, index: number) => string | JQuery | Element)): this;
+    wrapInner(wrappingElement_function: JQuery.Selector | JQuery.htmlString | Element | JQuery | ((this: T, index: number) => string | JQuery | Element)): this;
 
-    [n: number]: TElement;
+    [n: number]: T;
 }

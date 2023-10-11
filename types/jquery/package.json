@@ -1,0 +1,7 @@
+{
+  "name": "@types/jquery",
+  "types": "index.d.ts",
+  "devDependencies": {
+    "typed-query-selector": "^2.10.1"
+  }
+}

@@ -30,5 +30,6 @@
 /// <reference path="JQuery.d.ts" />
 /// <reference path="misc.d.ts" />
 /// <reference path="legacy.d.ts" />
+/// <reference path="SelectorString.d.ts" />
 
 export = jQuery;
